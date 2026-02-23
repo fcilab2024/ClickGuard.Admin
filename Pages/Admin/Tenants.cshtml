@@ -1,0 +1,55 @@
+@page
+@model ClickGuard.Admin.Pages.Admin.TenantsModel
+@{
+    ViewData["Title"] = "Tenants";
+}
+
+<h2>Tenants</h2>
+
+<div class="text-danger">
+    @Html.ValidationSummary()
+</div>
+
+<hr />
+
+<h4>Create New Tenant</h4>
+
+<form method="post" asp-page-handler="Create">
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="NewTenant.Name" class="form-control" />
+        <span asp-validation-for="NewTenant.Name" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Create Tenant</button>
+</form>
+
+<hr />
+
+<h4>Existing Tenants</h4>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Created</th>
+            <th>Active</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var tenant in Model.Tenants)
+    {
+        <tr>
+            <td>@tenant.Name</td>
+            <td>@tenant.CreatedAt.ToString("u")</td>
+            <td>@tenant.IsActive</td>
+            <td>
+                <a asp-page="/Admin/Invites" asp-route-tenantId="@tenant.Id" class="btn btn-sm btn-secondary">
+                    Manage Invites
+                </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
