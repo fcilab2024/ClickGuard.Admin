@@ -20,7 +20,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 
     // Optional hardening (recommended)
     options.Password.RequiredLength = 8;
-    options.Lockout.MaxFailedAccessAttempts = 3;
+    options.Lockout.MaxFailedAccessAttempts = 4;
 })
 .AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<ApplicationDbContext>();
