@@ -19,7 +19,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     options.SignIn.RequireConfirmedAccount = false;
 
     // Optional hardening (recommended)
-    options.Password.RequiredLength = 10;
+    options.Password.RequiredLength = 8;
     options.Lockout.MaxFailedAccessAttempts = 3;
 })
 .AddRoles<IdentityRole>()
