@@ -9,18 +9,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ClickGuard.Admin.Data.Migrations
+namespace ClickGuard.Admin.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260222031418_AddTenantInvites")]
-    partial class AddTenantInvites
+    [Migration("20260228054802_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.21")
+                .HasAnnotation("ProductVersion", "8.0.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -187,19 +187,16 @@ namespace ClickGuard.Admin.Data.Migrations
 
             modelBuilder.Entity("ClickGuard.Admin.Models.TrustedDomain", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DomainPattern")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("TenantId")
                         .HasColumnType("uniqueidentifier");
@@ -372,13 +369,11 @@ namespace ClickGuard.Admin.Data.Migrations
 
             modelBuilder.Entity("ClickGuard.Admin.Models.TrustedDomain", b =>
                 {
-                    b.HasOne("ClickGuard.Admin.Models.Tenant", "Tenant")
+                    b.HasOne("ClickGuard.Admin.Models.Tenant", null)
                         .WithMany("TrustedDomains")
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Tenant");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

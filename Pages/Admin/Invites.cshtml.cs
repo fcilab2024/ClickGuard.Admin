@@ -18,7 +18,7 @@ public class InvitesModel : PageModel
     [BindProperty(SupportsGet = true)]
     public Guid TenantId { get; set; }
 
-    public Tenant Tenant { get; set; } = default!;
+    public ClickGuard.Admin.Models.Tenant Tenant { get; set; }
     public List<TenantInvite> Invites { get; set; } = new();
 
     [BindProperty]

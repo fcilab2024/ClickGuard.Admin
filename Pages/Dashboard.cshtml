@@ -1,0 +1,52 @@
+@page
+@model ClickGuard.Admin.Pages.DashboardModel
+@{
+    ViewData["Title"] = "Tenant Dashboard";
+}
+
+<h2>Tenant Dashboard</h2>
+
+@if (Model.Tenant == null)
+{
+    <div class="alert alert-danger">
+        No tenant associated with this account.
+    </div>
+}
+else
+{
+    <div class="card p-3 mb-3">
+        <h4>@Model.Tenant.Name</h4>
+
+        <p>
+            <strong>Created:</strong>
+            @Model.Tenant.CreatedAt.ToString("u")
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            @(Model.Tenant.IsActive ? "Active" : "Inactive")
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h5>Users</h5>
+                <h3>@Model.UserCount</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3">
+                <h5>Trusted Domains</h5>
+                <h3>@Model.TrustedDomainCount</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="/Tenant/TrustedDomains" class="btn btn-outline-primary">
+            Manage Trusted Domains
+        </a>
+    </div>
+}

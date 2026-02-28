@@ -1,5 +1,4 @@
 using ClickGuard.Admin.Data;
-using ClickGuard.Admin.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -17,10 +16,10 @@ public class TenantsModel : PageModel
         _db = db;
     }
 
-    public List<Tenant> Tenants { get; set; } = new();
+    public List<ClickGuard.Admin.Models.Tenant> Tenants { get; set; } = new();
 
     [BindProperty]
-    public Tenant NewTenant { get; set; } = new();
+    public ClickGuard.Admin.Models.Tenant NewTenant { get; set; } = new();
 
     public async Task OnGetAsync()
     {
@@ -38,7 +37,7 @@ public class TenantsModel : PageModel
             return Page();
         }
 
-        var tenant = new Tenant
+        var tenant = new ClickGuard.Admin.Models.Tenant
         {
             Id = Guid.NewGuid(),
             Name = NewTenant.Name.Trim(),

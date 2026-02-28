@@ -1,0 +1,57 @@
+@page
+@model ClickGuard.Admin.Pages.Tenant.TrustedDomainsModel
+@{
+    ViewData["Title"] = "Trusted Domains";
+}
+
+<h2>Trusted Domains</h2>
+
+<div class="text-danger">
+    @Html.ValidationSummary()
+</div>
+
+<hr />
+
+<h4>Add Domain</h4>
+
+<form method="post" asp-page-handler="Add">
+    <div class="form-group">
+        <input asp-for="NewDomain" class="form-control" placeholder="example.com" />
+    </div>
+
+    <div class="mt-2">
+        <button type="submit" class="btn btn-primary">Add Domain</button>
+    </div>
+</form>
+
+<hr />
+
+<h4>Existing Domains</h4>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Domain</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var d in Model.Domains)
+    {
+        <tr>
+             <td>@d.DomainPattern</td>
+            <td>@d.CreatedAt.ToString("u")</td>
+            <td>
+                <form method="post" asp-page-handler="Delete">
+                    <input type="hidden" name="id" value="@d.Id" />
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

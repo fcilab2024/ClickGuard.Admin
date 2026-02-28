@@ -101,7 +101,7 @@ public class InviteModel : PageModel
 
         await tx.CommitAsync();
 
-        return RedirectToPage("/Identity/Account/Login");
+        return RedirectToPage("/Account/Login", new { area = "Identity" });
     }
 
     private async Task<TenantInvite?> FindInviteAsync(string token)
