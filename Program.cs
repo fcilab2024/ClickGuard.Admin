@@ -45,7 +45,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication(); // <-- MISSssING in your current file (must be before Authorization)
+app.UseAuthentication(); // <-- MISsING in your current file (must be before Authorization)
 app.UseAuthorization();
 
 app.MapRazorPages();
