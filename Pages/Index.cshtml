@@ -1,10 +1,48 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "ClickGuard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5 text-center">
+
+    <h1 class="display-4 fw-bold">ClickGuard Security Platform</h1>
+
+    <p class="lead mt-3">
+        Protect users from phishing and malicious links across Outlook, Teams, and the web.
+    </p>
+
+    <div class="mt-4">
+        <a class="btn btn-primary btn-lg me-2" href="/Admin/Tenants">
+            Admin Dashboard
+        </a>
+
+        <a class="btn btn-outline-secondary btn-lg" href="/Dashboard">
+            Tenant Dashboard
+        </a>
+    </div>
+
+</div>
+
+<hr class="mt-5 mb-5" />
+
+<div class="container">
+    <div class="row text-center">
+
+        <div class="col-md-4">
+            <h4>🔐 Secure Links</h4>
+            <p>Block phishing and malicious domains in real-time.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h4>🏢 Multi-Tenant</h4>
+            <p>Manage multiple organizations with isolated policies.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h4>⚡ Fast API</h4>
+            <p>Allowlist decisions in milliseconds for endpoint security.</p>
+        </div>
+
+    </div>
 </div>

@@ -20,3 +20,19 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+body {
+    background-color: #f4f6f9;
+}
+
+h1 {
+    color: #1b1f23;
+}
+
+.navbar {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.btn {
+    border-radius: 8px;
+}
